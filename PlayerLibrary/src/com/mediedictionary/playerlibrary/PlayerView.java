@@ -139,6 +139,7 @@ public class PlayerView extends FrameLayout implements IVideoPlayer {
 	private final SurfaceHolder.Callback mSurfaceCallback = new Callback() {
 		@Override
 		public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
+			Log.d(TAG, "surfaceChanged AAA " + width +" x " + height  + "    " +format );
 			if (format == PixelFormat.RGBX_8888)
 				Log.d(TAG, "Pixel format is RGBX_8888");
 			else if (format == PixelFormat.RGB_565)
@@ -167,6 +168,7 @@ public class PlayerView extends FrameLayout implements IVideoPlayer {
 	private final SurfaceHolder.Callback mSubtitlesSurfaceCallback = new Callback() {
 		@Override
 		public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
+			Log.d(TAG, "surfaceChanged BBB " + width +" x " + height  + "    " +format );
 			if (mLibVLC != null)
 				mLibVLC.attachSubtitlesSurface(holder.getSurface());
 		}
@@ -184,6 +186,7 @@ public class PlayerView extends FrameLayout implements IVideoPlayer {
 
 	@Override
 	public void setSurfaceSize(int width, int height, int visible_width, int visible_height, int sar_num, int sar_den) {
+		Log.d(TAG, "setSurfaceSize " + width +" x " + height  + "    " +visible_width+" x " + visible_height + " " +sar_num + "," + sar_den );
 		if (width * height == 0) {
 			return;
 		}
@@ -212,6 +215,7 @@ public class PlayerView extends FrameLayout implements IVideoPlayer {
 		// get screen size
 		sw = getWidth();
 		sh = getHeight();
+		Log.d(TAG, "changeSurfaceSize " + sw +" x " + sh);		
 		double dw = sw, dh = sh;
 		boolean isPortrait;
 		isPortrait = getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT;
